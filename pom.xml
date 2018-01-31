@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
 	<artifactId>sample</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>2.2.1-SNAPSHOT</version>
 	<packaging>mule</packaging>
 	<name>Mule sample Application</name>
 
@@ -26,14 +26,44 @@
 				<extensions>true</extensions>
 				<configuration>
 					<copyToAppsDirectory>true</copyToAppsDirectory>
+					<inclusions>
+						<inclusion>
+							<groupId>org.mule.modules</groupId>
+							<artifactId>mule-module-sfdc</artifactId>
+						</inclusion>
+					</inclusions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
 					<deploymentType>cloudhub</deploymentType>
 					<!-- muleVersion is the runtime version as it appears on the CloudHub 
 						interface -->
-					<muleVersion>3.8.2</muleVersion>
-					<username>srinivareddy5482</username>
-					<password>Kallam@548@33</password>
+					<muleVersion>3.7.0</muleVersion>
+					<username>srinivasreddy5482</username>
+					<password>Kallam@548</password>
 					<redeploy>true</redeploy>
 					<environment>Sandbox</environment>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -142,6 +172,7 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
+	
 	</dependencies>
 
 	<repositories>
@@ -169,5 +200,6 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
 
 </project>
